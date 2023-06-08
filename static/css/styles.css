@@ -1,6 +1,30 @@
 body {
-  background-color: lightblue;
+  background-size: 1900px;
+  background-repeat: no-repeat;
+  background-image: url("P1.jpg");
 }
-h1{
-  color: red;
+
+div {
+  width: 915px;
+  height: 800px;
+  color: #fff1af;
+  transition: 0.5s;
+  font-size: 100px;
+  font-weight: bold;
+  padding-top: 30px;
+  text-align: center;
+  border-radius: 70px;
+  border: 2px solid white;
+  backdrop-filter: blur(1.5px);
+  margin: 100px 0px 0px 26.2%;
+  font-family: "B Ferdosi", serif;
+  background-color: rgba(14, 0, 46, 0.74);
+}
+
+div:hover
+{
+  color: #fbd249;
+  backdrop-filter: blur(4px);
+  border: 2px solid rgba(42, 1, 88, 0.62);
+  background-color: rgba(14, 0, 46, 0.79);
 }
