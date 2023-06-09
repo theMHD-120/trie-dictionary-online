@@ -23,44 +23,42 @@
 <div class="container">
     <div class="card mx-auto border-0 main-card shadow-sm">
         <div class="card-body">
-            <ul class="nav justify-content-center mb-2" style="border-bottom: 1px solid #4a4a4a;">
+            <ul class="nav justify-content-center mb-3" style="border-bottom: 1px solid #4a4a4a;">
                 <li class="nav-item">
                     <a class="nav-link fw-bold" style="color: #4a4a4a;" data-bs-toggle="collapse" href="#AboutBox"
                        role="button"
-                       aria-expanded="false" aria-controls="AboutBox" data-bs-parent="#NavGroup">About</a>
+                       aria-expanded="false" aria-controls="AboutBox">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" style="color: #4a4a4a;" data-bs-toggle="collapse" href="#HelpBox"
                        role="button"
-                       aria-expanded="false" aria-controls="HelpBox" data-bs-parent="#NavGroup">Help</a>
+                       aria-expanded="false" aria-controls="HelpBox">Help</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" style="color: #4a4a4a;" data-bs-toggle="collapse" href="#SearchWordBox"
                        role="button"
-                       aria-expanded="true" aria-controls="SearchWordBox" data-bs-parent="#NavGroup">Search Word</a>
+                       aria-expanded="true" aria-controls="SearchWordBox">Search Word</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" style="color: #4a4a4a;" data-bs-toggle="collapse" href="#AddWordBox"
                        role="button"
-                       aria-expanded="false" aria-controls="AddWordBox" data-bs-parent="#NavGroup">Add Word</a>
+                       aria-expanded="false" aria-controls="AddWordBox">Add Word</a>
                 </li>
             </ul>
-            <div class="row">
-                <div class="collapse multi-collapse" id="AboutBox">
+            <div class="row" id="NavGroup">
+                <div class="collapse multi-collapse" id="AboutBox" data-bs-parent="#NavGroup">
                     Developed By MHD , MHSN
                 </div>
-                <div class="collapse multi-collapse" id="HelpBox">
+                <div class="collapse multi-collapse" id="HelpBox" data-bs-parent="#NavGroup">
                     here is help
                 </div>
-                <div class="collapse multi-collapse show" id="SearchWordBox">
+                <div class="collapse multi-collapse show" id="SearchWordBox" data-bs-parent="#NavGroup">
                     here is search word
                 </div>
-                <div class="collapse multi-collapse" id="AddWordBox">
+                <div class="collapse multi-collapse" id="AddWordBox" data-bs-parent="#NavGroup">
                     Here is add word
                 </div>
             </div>
-
-
         </div>
     </div>
 
