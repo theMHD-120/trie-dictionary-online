@@ -36,3 +36,6 @@ class TrieDictionary:
 
     def make_suggestion(self, word):
         pass
+
+
+trie_dict = TrieDictionary()

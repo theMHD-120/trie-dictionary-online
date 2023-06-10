@@ -22,11 +22,12 @@
 
 <div class="container">
 
-{#===========================HEADER=============================#}
-    <p class="text-center text-light display-2 mb-0" style="margin-top: 4rem; text-shadow: 2px 2px rgba(60,60,60,0.3)">Trie Dictionary Online</p>
-{#    <img class="mx-auto d-block" width="350rem" height="140rem" src="{% static 'img/Untitled-1.png' %}" alt="">#}
- <img class="mx-auto d-block" width="300rem" height="75rem" src="{% static 'img/header-1.png' %}" alt="">
-{#===========================MAIN CARD=============================#}
+    {#===========================HEADER=============================#}
+    <p class="text-center text-light display-2 mb-0" style="margin-top: 4rem; text-shadow: 2px 2px rgba(60,60,60,0.3)">
+        Trie Dictionary Online</p>
+    {#    <img class="mx-auto d-block" width="350rem" height="140rem" src="{% static 'img/Untitled-1.png' %}" alt="">#}
+    <img class="mx-auto d-block" width="300rem" height="75rem" src="{% static 'img/header-1.png' %}" alt="">
+    {#===========================MAIN CARD=============================#}
 
     <div class="card mx-auto border-0 main-card shadow-sm">
         <div class="card-body">
@@ -60,7 +61,20 @@
                     here is help
                 </div>
                 <div class="collapse multi-collapse show" id="SearchWordBox" data-bs-parent="#NavGroup">
-                    here is search word
+                    <form action="{% url 'home' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-10">
+                                <input class="form-control"
+                                       style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
+                                       placeholder="some thing like word ...." name="word">
+                            </div>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-outline-dark">Search</button>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
                 <div class="collapse multi-collapse" id="AddWordBox" data-bs-parent="#NavGroup">
                     Here is add word
