@@ -30,3 +30,9 @@ class TrieDictionary:
             words = [word.strip() for word in file.readlines()]
         for word in words:
             self.insert(word)
+
+    def search_word(self, word):
+        pass
+
+    def make_suggestion(self, word):
+        pass
