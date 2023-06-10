@@ -1,7 +1,12 @@
+import os
+
+UTILS_DIR = os.path.dirname(os.path.dirname(__file__))
+
+
 class Node:
     def __init__(self, value):
         self.is_valid = False
-        self.childs = [None for i in range(26)]
+        self.childs = [None for i in range(1026)]
         self.value = value
 
     def __repr__(self):
@@ -11,7 +16,8 @@ class Node:
 
 
 class TrieDictionary:
-    WORDS_PATH = 'words.txt'
+
+    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
 
     def __init__(self):
         self.root = Node('')
