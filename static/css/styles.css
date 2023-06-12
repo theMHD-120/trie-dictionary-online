@@ -8,14 +8,14 @@ body {
 }
 
 @keyframes gradient {
-    0%  {background-color: rgb(179, 3, 171)}
+    0%  {background-color: rgb(202, 5, 193)}
     25% {background-color: rgb(10, 27, 243)}
     50%  {background-color: rgb(5, 250, 221)}
     100% {background-color: rgb(255, 2, 24)}
     100% {background-color: rgb(255, 2, 24)}
     50%  {background-color: rgb(5, 250, 221)}
     25% {background-color: rgb(10, 27, 243)}
-    0%  {background-color: rgb(179, 3, 171)}
+    0%  {background-color: rgb(202, 5, 193)}
 }
 
 .wave {

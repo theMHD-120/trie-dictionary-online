@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Trie Dictionary Online</title>
+        <link rel="icon" href="{% static 'img/trilogo_.png' %}">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <link rel="icon" href="trilogo.png" type="image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
@@ -14,7 +14,7 @@
                 width: 40rem;
                 height: 12rem;
                 transition: 0.5s;
-                margin-top: 5rem;
+                margin-top: 3rem;
                 border-radius: 20px;
                 backdrop-filter: blur(5px);
                 background-color: rgba(240, 248, 255, 0.65);
@@ -24,7 +24,7 @@
             .main-card:hover {
                 transform: translateY(-3px);
                 background-color: rgba(227, 231, 250, 0.92);
-                box-shadow: rgba(90, 90, 90, 0.9) 0 10px 45px 10px;
+                box-shadow: rgba(58, 2, 2, 0.83) 0 10px 45px 10px;
             }
         </style>
     </head>
@@ -32,12 +32,23 @@
 
         <div class="container">
             {#===========================HEADER=============================#}
-            <p class="text-center text-light display-2 mb-0"
-               style="margin: 7.5rem; font-weight: 327; text-shadow: rgb(60,60,60) 0 5px 5px;">
-                Trie Dictionary Online</p>
+            <pre class="text-center text-light display-2 mb-0"
+               style='height: 250px;
+                       margin-top: 2rem;
+                       font-weight: 350;
+                       padding-top: 55px;
+                       background-size: 105px;
+                       background-position-y: 30%;
+                       background-position-x: 46.8%;
+                       background-repeat: no-repeat;
+                       font-family: "Segoe UI Light",serif;
+                       text-shadow: rgb(40,40,40) 0 5px 5px;
+                       background-image: url("{% static 'img/trilogo_.png' %}");
+                       '>
+<span style="font-weight: 600;"> Trie</span>
+Dictionary Online</pre>
             {#    <img class="mx-auto d-block" width="350rem" height="140rem" src="{% static 'img/Untitled-1.png' %}" alt="">#}
-            <img class="mx-auto d-block" width="300rem" height="75rem" style="margin-top: 2rem"
-                 src="{% static 'img/header-1.png' %}" alt="">
+            <img class="mx-auto d-block" width="300rem" height="75rem" src="{% static 'img/header-1.png' %}" alt="">
             {#===========================MAIN CARD=============================#}
 
             <div class="card mx-auto main-card">
@@ -67,9 +78,9 @@
                     <div class="row" id="NavGroup">
                         <div class="collapse multi-collapse" id="AboutBox" data-bs-parent="#NavGroup">
                                     <pre>
-        This project developed by:
-        Seyed Mohsen Razavi Zadagan Jahromi     ||| 40030489
-        Seyed Mahdi Mahdavi Mortazavi (theMHD)  ||| 40030490
+This project developed by:
+Seyed Mohsen Razavi Zadagan Jahromi     ||| 40030489
+Seyed Mahdi Mahdavi Mortazavi (theMHD)  ||| 40030490
                                     </pre>
                         </div>
                         <div class="collapse multi-collapse" id="HelpBox" data-bs-parent="#NavGroup">
