@@ -8,13 +8,14 @@ body {
 }
 
 @keyframes gradient {
-    0%  {background-color: rgb(102, 1, 97)}
-    25% {background-color: rgb(42, 54, 213)}
-    50%  {background-color: rgb(20, 251, 224)}
+    0%  {background-color: rgb(179, 3, 171)}
+    25% {background-color: rgb(10, 27, 243)}
+    50%  {background-color: rgb(5, 250, 221)}
     100% {background-color: rgb(255, 2, 24)}
-    50%  {background-color: rgb(20, 251, 224)}
-    25% {background-color: rgb(42, 54, 213)}
-    0%  {background-color: rgb(102, 1, 97)}
+    100% {background-color: rgb(255, 2, 24)}
+    50%  {background-color: rgb(5, 250, 221)}
+    25% {background-color: rgb(10, 27, 243)}
+    0%  {background-color: rgb(179, 3, 171)}
 }
 
 .wave {
