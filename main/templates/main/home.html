@@ -1,15 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Trie Dictionary Online</title>
-        <link rel="icon" href="{% static 'img/trilogo_.png' %}">
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+{% extends '_base.html' %}
+    {% load static %}
+    {% block styles %}
         <style>
             .main-card {
                 width: 40rem;
@@ -27,27 +18,29 @@
                 background-color: rgba(227, 231, 250, 0.92);
                 box-shadow: rgba(97, 3, 3, 0.83) 0 10px 45px 10px;
             }
+
+            .title {
+                height: 290px;
+                font-size: 90px;
+                margin-top: 2rem;
+                padding-top: 55px;
+                font-weight: bold;
+                background-size: 145px;
+                background-position-y: 26%;
+                background-position-x: 47.3%;
+                background-repeat: no-repeat;
+                font-family: "Segoe UI Light", serif;
+                text-shadow: rgba(10, 10, 10, 0.5) 4px 6px 3px;
+                filter: drop-shadow(0 5px 5px rgba(10, 10, 10, 0.9));
+                background-image: url("{% static 'img/trilogo_.png' %}");
+            }
         </style>
-    </head>
-    <body>
+    {% endblock %}
+    {% block content %}
 
         <div class="container">
             {#===========================HEADER=============================#}
-            <pre class="text-center text-light display-2 mb-0"
-                 style='height: 290px;
-                         font-size: 90px;
-                         margin-top: 2rem;
-                         padding-top: 55px;
-                         font-weight: bold;
-                         background-size: 148px;
-                         background-position-y: 26%;
-                         background-position-x: 47.3%;
-                         background-repeat: no-repeat;
-                         font-family: "Segoe UI Light",serif;
-                         text-shadow: rgba(10,10,10,0.5) 4px 6px 3px;
-                         filter: drop-shadow(0 5px 5px rgba(10,10,10,0.9));
-                         background-image: url("{% static 'img/trilogo_.png' %}");
-                         '>
+            <pre class="title text-center text-light display-2 mb-0">
 <span style="font-weight: 600;">  Trie</span>
 Dictionary Online</pre>
             {#   <img class="mx-auto d-block" width="300rem" height="75rem" src="{% static 'img/header-1.png' %}" alt="">#}
@@ -67,7 +60,8 @@ Dictionary Online</pre>
                                aria-expanded="false" aria-controls="HelpBox">Help</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#SearchWordBox"
+                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse"
+                               href="#SearchWordBox"
                                role="button"
                                aria-expanded="true" aria-controls="SearchWordBox">Search Word</a>
                         </li>
@@ -79,12 +73,12 @@ Dictionary Online</pre>
                     </ul>
                     <div class="row" id="NavGroup">
                         <div class="collapse multi-collapse" id="AboutBox" data-bs-parent="#NavGroup">
-                            <pre>
+                                <pre>
 This project developed by:
 Seyed Mohsen Razavi Zadegan Jahromi     ||| 40030489
 Seyed Mahdi Mahdavi Mortazavi (theMHD)  ||| 40030490
 June 2023
-                            </pre>
+                                </pre>
                         </div>
                         <div class="collapse multi-collapse" id="HelpBox" data-bs-parent="#NavGroup">
                             here is help
@@ -124,16 +118,4 @@ June 2023
                 </div>
             </div>
         </div>
-
-        <div class="wave" style="height: 15rem"></div>
-        <div class="wave" style="height: 13rem"></div>
-        <div class="wave" style="height: 10rem"></div>
-        <div class="wave" style="height: 7rem"></div>
-        <div class="wave" style="height: 4rem"></div>
-        <div class="wave" style="height: 2rem"></div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-                crossorigin="anonymous"></script>
-
-    </body>
-</html>
+    {% endblock %}
