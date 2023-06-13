@@ -16,12 +16,11 @@ class Node:
 
 
 class TrieDictionary:
-
     WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
 
     def __init__(self):
         self.root = Node('')
-        self.read_words()
+        self.__read_words()
 
     def insert(self, word):
         this_root = self.root
@@ -31,7 +30,7 @@ class TrieDictionary:
             this_root = this_root.childs[ord(c) - ord('a')]
         this_root.is_valid = True
 
-    def read_words(self):
+    def __read_words(self):
         with open(TrieDictionary.WORDS_PATH) as file:
             words = [word.strip() for word in file.readlines()]
         for word in words:
