@@ -1,140 +1,147 @@
 {% extends '_base.html' %}
 {% load static %}
-    {% block styles %}
-        <style>
-            .main-card {
-                width: 41rem;
-                height: 12rem;
-                transition: 0.5s;
-                margin-top: 3rem;
-                border-radius: 20px;
-                backdrop-filter: blur(3.8px);
-                background-color: rgba(240, 248, 255, 0.55);
-                box-shadow: rgba(255, 0, 0, 0.32) 0 3px 90px 10px;
-            }
-            .main-card:hover {
-                transform: translateY(-4px);
-                background-color: rgba(227, 231, 250, 0.9);
-                box-shadow: rgba(97, 3, 3, 0.6) 0 10px 45px 10px;
-            }
-            .title {
-                height: 290px;
-                font-size: 90px;
-                margin-top: 2rem;
-                padding-top: 55px;
-                font-weight: bold;
-                background-size: 145px;
-                background-position-y: 26%;
-                background-position-x: 47.3%;
-                background-repeat: no-repeat;
-                font-family: "Segoe UI Light", serif;
-                text-shadow: rgba(10, 10, 10, 0.5) 4px 6px 3px;
-                filter: drop-shadow(0 5px 5px rgba(10, 10, 10, 0.9));
-                background-image: url("{% static 'img/trilogo_.png' %}");
-            }
-        </style>
-    {% endblock %}
+{% block styles %}
+    <style>
+        .main-card {
+            width: 41rem;
+            height: 12rem;
+            transition: 0.5s;
+            margin-top: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(3.8px);
+            background-color: rgba(240, 248, 255, 0.55);
+            box-shadow: rgba(255, 0, 0, 0.32) 0 3px 90px 10px;
+        }
 
-    {% block content %}
-        <div class="container">
-            {#===========================HEADER=============================#}
-            <pre class="title text-center text-light display-2 mb-0">
+        .main-card:hover {
+            transform: translateY(-4px);
+            background-color: rgba(227, 231, 250, 0.9);
+            box-shadow: rgba(97, 3, 3, 0.6) 0 10px 45px 10px;
+        }
+
+        .title {
+            height: 290px;
+            font-size: 90px;
+            margin-top: 2rem;
+            padding-top: 55px;
+            font-weight: bold;
+            background-size: 145px;
+            background-position-y: 26%;
+            background-position-x: 47.3%;
+            background-repeat: no-repeat;
+            font-family: "Segoe UI Light", serif;
+            text-shadow: rgba(10, 10, 10, 0.25) 4px 6px 3px;
+            filter: drop-shadow(0 5px 5px rgba(10, 10, 10, 0.9));
+            background-image: url("{% static 'img/trilogo_.png' %}");
+        }
+
+        .form-control:focus {
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.0) inset, 0px 0px 8px rgba(255, 100, 255, 0.0);
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {#===========================HEADER=============================#}
+        <pre class="title text-center text-light display-2 mb-0">
 <span style="font-weight: 600;">  Trie</span>
 Dictionary Online</pre>
-            {#   <img class="mx-auto d-block" width="300rem" height="75rem" src="{% static 'img/header-1.png' %}" alt="">#}
-            {#===========================MAIN CARD=============================#}
+        {#   <img class="mx-auto d-block" width="300rem" height="75rem" src="{% static 'img/header-1.png' %}" alt="">#}
+        {#===========================MAIN CARD=============================#}
 
-            <div class="card mx-auto main-card">
-                <div class="card-body">
-                    <ul class="nav justify-content-center mb-3" style="border-bottom: 2px solid #383838;">
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#AboutBox"
-                               role="button"
-                               aria-expanded="false" aria-controls="AboutBox">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#HelpBox"
-                               role="button"
-                               aria-expanded="false" aria-controls="HelpBox">Help</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse"
-                               href="#SearchWordBox"
-                               role="button"
-                               aria-expanded="true" aria-controls="SearchWordBox">Search Word</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#AddWordBox"
-                               role="button"
-                               aria-expanded="false" aria-controls="AddWordBox">Add Word</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#MusicBox"
-                               role="button"
-                               aria-expanded="false" aria-controls="AboutBox">Music</a>
-                        </li>
-                    </ul>
+        <div class="card mx-auto main-card">
+            <div class="card-body">
+                <ul class="nav justify-content-center mb-3" style="border-bottom: 2px solid #383838;">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#AboutBox"
+                           role="button"
+                           aria-expanded="false" aria-controls="AboutBox">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#HelpBox"
+                           role="button"
+                           aria-expanded="false" aria-controls="HelpBox">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse"
+                           href="#SearchWordBox"
+                           role="button"
+                           aria-expanded="true" aria-controls="SearchWordBox">Search Word</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#AddWordBox"
+                           role="button"
+                           aria-expanded="false" aria-controls="AddWordBox">Add Word</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#MusicBox"
+                           role="button"
+                           aria-expanded="false" aria-controls="AboutBox">Music</a>
+                    </li>
+                </ul>
 
-                    <div class="row" id="NavGroup">
-                        <div class="collapse multi-collapse" id="AboutBox" data-bs-parent="#NavGroup">
-                            <p class="text-left">
-                                This project developed by:
-                                <br>
-                                Seyed Mohsen Razavi Zadegan Jahromi ||| 40030489
-                                <br>
-                                Seyed Mahdi Mahdavi Mortazavi (theMHD) ||| 40030490
-                                <br>
-                                June 2023
-                            </p>
-                        </div>
-                        <div class="collapse multi-collapse mb-2" id="HelpBox" data-bs-parent="#NavGroup">
-                            <p class="mb-0 pb-0" style="font-weight: bold; color: rgba(0,0,0,0.64)">In The Name Of Allah</p>
-                            <p>
-                                You can search words inside trie in search word tab.
-                                if word existed translation will be shown else not a warning alerts you that word doesn't
-                                exists in trie.
-                                this way you can add word in add word tab. if word added successfully or not, a message
-                                reports that.
-                            </p>
-                        </div>
-                        <div class="collapse multi-collapse show mt-3" id="SearchWordBox" data-bs-parent="#NavGroup">
-                            <form action="{% url 'search_word' %}" method="POST">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-10">
-                                        <input class="form-control"
-                                               style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
-                                               placeholder="some thing like word ...." name="word">
-                                    </div>
-                                    <div class="col-2">
-                                        <button type="submit" class="btn btn-outline-dark">Search</button>
-                                    </div>
+                <div class="row" id="NavGroup">
+                    <div class="collapse multi-collapse" id="AboutBox" data-bs-parent="#NavGroup">
+                        <p class="text-left">
+                            This project developed by:
+                            <br>
+                            Seyed Mohsen Razavi Zadegan Jahromi ||| 40030489
+                            <br>
+                            Seyed Mahdi Mahdavi Mortazavi (theMHD) ||| 40030490
+                            <br>
+                            June 2023
+                        </p>
+                    </div>
+                    <div class="collapse multi-collapse mb-2" id="HelpBox" data-bs-parent="#NavGroup">
+                        <p class="mb-0 pb-0" style="font-weight: bold; color: rgba(0,0,0,0.64)">In The Name Of Allah</p>
+                        <p>
+                            You can search words inside trie in search word tab.
+                            if word existed translation will be shown else not a warning alerts you that word doesn't
+                            exists in trie.
+                            this way you can add word in add word tab. if word added successfully or not, a message
+                            reports that.
+                        </p>
+                    </div>
+                    <div class="collapse multi-collapse show mt-3" id="SearchWordBox" data-bs-parent="#NavGroup">
+                        <form action="{% url 'search_word' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-10">
+                                    <input class="form-control"
+                                           style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
+                                           placeholder="some thing like word ...." name="word">
                                 </div>
-                            </form>
-                        </div>
-                        <div class="collapse multi-collapse mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
-                            <form action="{% url 'add_word' %}" method="POST">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-10">
-                                        <input class="form-control"
-                                               style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
-                                               placeholder="some thing like word ...." name="word">
-                                    </div>
-                                    <div class="col-2">
-                                        <button type="submit" class="btn btn-outline-dark">Add</button>
-                                    </div>
-
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-outline-dark">Search</button>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
-                            <audio controls autoplay loop style="margin-left: 153px;">
-                                <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="collapse multi-collapse mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
+                        <form action="{% url 'add_word' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-10">
+                                    <input class="form-control"
+                                           style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
+                                           placeholder="some thing like word ...." name="word">
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-outline-dark">Add</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
+                        <audio controls autoplay loop style="margin-left: 153px;">
+                            <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
+                        </audio>
                     </div>
                 </div>
             </div>
         </div>
-    {% endblock %}
+    </div>
+{% endblock %}
