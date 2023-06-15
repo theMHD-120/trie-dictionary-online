@@ -70,6 +70,11 @@ Dictionary Online</pre>
                                role="button"
                                aria-expanded="false" aria-controls="AddWordBox">Add Word</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#MusicBox"
+                               role="button"
+                               aria-expanded="false" aria-controls="AboutBox">Music</a>
+                        </li>
                     </ul>
 
                     <div class="row" id="NavGroup">
@@ -114,6 +119,11 @@ June 2023
 
                                 </div>
                             </form>
+                        </div>
+                        <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
+                            <audio controls autoplay loop style="margin-left: 153px;" >
+                                <source src="{% static 'music1.mp3' %}" type="audio/mpeg">
+                            </audio>
                         </div>
                     </div>
                 </div>
