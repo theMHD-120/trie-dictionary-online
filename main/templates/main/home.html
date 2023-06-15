@@ -4,7 +4,7 @@
     <style>
         .main-card {
             width: 41rem;
-            height: 12rem;
+            height: 13rem;
             transition: 0.5s;
             margin-top: 3rem;
             border-radius: 20px;
@@ -15,7 +15,7 @@
 
         .main-card:hover {
             transform: translateY(-4px);
-            background-color: rgba(227, 231, 250, 0.9);
+            background-color: rgba(227, 231, 250, 0.92);
             box-shadow: rgba(97, 3, 3, 0.6) 0 10px 45px 10px;
         }
 
@@ -85,7 +85,7 @@ Dictionary Online</pre>
                 <div class="row" id="NavGroup">
                     <div class="collapse multi-collapse" id="AboutBox" data-bs-parent="#NavGroup">
                         <p class="text-left">
-                            This project developed by:
+                            This project developed by :
                             <br>
                             Seyed Mohsen Razavi Zadegan Jahromi ||| 40030489
                             <br>
@@ -95,10 +95,10 @@ Dictionary Online</pre>
                         </p>
                     </div>
                     <div class="collapse multi-collapse mb-2" id="HelpBox" data-bs-parent="#NavGroup">
-                        <p class="mb-0 pb-0" style="font-weight: bold; color: rgba(0,0,0,0.64)">In The Name Of Allah</p>
+                        <p class="mb-0 pb-0" style="font-weight: bold; color: rgba(0,0,0,0.64)">In the name of Allah</p>
                         <p>
                             You can search words inside trie in search word tab.
-                            if word existed translation will be shown else not a warning alerts you that word doesn't
+                            if word existed translation, will be shown else not, a warning alerts you that word doesn't
                             exists in trie.
                             this way you can add word in add word tab. if word added successfully or not, a message
                             reports that.
@@ -136,9 +136,10 @@ Dictionary Online</pre>
                         </form>
                     </div>
                     <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
-                        <audio controls autoplay loop style="margin-left: 153px;">
+                        <audio controls autoplay loop style="margin-left: 160px;">
                             <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
                         </audio>
+                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);"> if doesn't start, click to play...</p>
                     </div>
                 </div>
             </div>
