@@ -19,6 +19,13 @@ body {
 /* ------------------------- The components style part ------------------------- */
 
 #AboutBox {
-    color: #303030;
-    font-size: 20px;
+    font-size: 18px;
+    margin-left: 10px;
+    color: rgb(0, 0, 0);
+}
+
+#HelpBox {
+    font-size: 16px;
+    text-align: center;
+    color: rgb(0, 0, 0);
 }
