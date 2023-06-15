@@ -1,19 +1,19 @@
 body {
     margin: auto;
     background-size: 400% 400%;
-    animation: gradient 7s ease infinite;
+    animation: gradient 10.5s ease infinite;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(315deg, rgba(102, 1, 97, 0.8) 20%, rgba(42, 54, 213, 0.8) 40%, rgba(20, 251, 224, 0.8) 60%, rgba(255, 2, 24, 0.8) 92%) fixed;
 }
 
 @keyframes gradient {
-    0%  {background-color: rgb(202, 5, 193)}
+    0%  {background-color: rgb(255, 0, 244)}
     15% {background-color: rgb(10, 27, 243)}
     30% {background-color: rgb(5, 250, 221)}
     50% {background-color: rgb(255, 2, 24)}
     70% {background-color: rgb(5, 250, 221)}
     85% {background-color: rgb(10, 27, 243)}
-    100% {background-color: rgb(202, 5, 193)}
+    100% {background-color: rgb(255, 0, 244)}
 }
 
 /* ------------------------- The components style part ------------------------- */
