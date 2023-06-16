@@ -6,7 +6,7 @@ UTILS_DIR = os.path.dirname(os.path.dirname(__file__))
 class Node:
     def __init__(self, value):
         self.is_valid = False
-        self.childs = [None for i in range(1026)]
+        self.childs = [None for i in range(130)]
         self.value = value
 
     def __repr__(self):
@@ -23,12 +23,12 @@ class TrieDictionary:
         self.__read_words()
 
     def insert(self, word):
-        this_root = self.root
+        this_node = self.root
         for c in word:
-            if not this_root.childs[ord(c) - ord('a')]:
-                this_root.childs[ord(c) - ord('a')] = Node(c)
-            this_root = this_root.childs[ord(c) - ord('a')]
-        this_root.is_valid = True
+            if not this_node.childs[ord(c) - 32]:
+                this_node.childs[ord(c) - 32] = Node(c)
+            this_node = this_node.childs[ord(c) - 32]
+        this_node.is_valid = True
 
     def __read_words(self):
         with open(TrieDictionary.WORDS_PATH) as file:
@@ -37,7 +37,24 @@ class TrieDictionary:
             self.insert(word)
 
     def search_word(self, word):
-        pass
+        this_node = self.root
+        index = 0
+        found = False
+        finished = False
+        while not finished:
+            node = this_node.childs[ord(word[index]) - 32]
+            if node and node.value == word[index]:
+                index += 1
+                this_node = node
+                if index == len(word):
+                    if this_node.is_valid:
+                        found = True
+                        finished = True
+                    else:
+                        finished = True
+            else:
+                finished = True
+        return found
 
     def make_suggestion(self, word):
         pass

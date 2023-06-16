@@ -6,7 +6,9 @@ from utils.trie_dictionary import trie_dict
 def search_word_view(request):
     if request.method == 'POST':
         word = request.POST['word']
-        print(word)
+        result = trie_dict.search_word(word)
+        if result:
+            pass
     return redirect(reverse('home'))
 
 

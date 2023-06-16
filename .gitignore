@@ -4,3 +4,4 @@ db.sqlite3
 venv/
 __pycache__/
 utils/test.py
+utils/words2.txt
