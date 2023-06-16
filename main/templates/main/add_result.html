@@ -49,7 +49,29 @@
         .form-control:focus {
             box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.0) inset, 0px 0px 8px rgba(255, 100, 255, 0.0);
         }
+        .success_message {
+            border: 2px solid rgb(5, 127, 99);
+            background-color: rgba(0, 0, 0, 0);
+            height: 2.2rem;
+            transition: 0.3s;
+            color: rgb(7, 63, 50);
+        }
 
+        .success_message:hover {
+            background-color: rgb(158, 255, 235, 0.5);
+        }
+
+        .fail_message {
+            border: 2px solid rgb(127, 5, 33);
+            background-color: rgba(0, 0, 0, 0);
+            height: 2.2rem;
+            transition: 0.3s;
+            color: rgb(55, 6, 18);
+        }
+
+        .fail_message:hover {
+            background-color: rgba(255, 128, 184, 0.5);
+        }
     </style>
 {% endblock %}
 
@@ -148,9 +170,17 @@ Dictionary Online</pre>
                             </div>
                         </form>
                         {% if result %}
-                            <h3>{{ word }} added to trie successfully</h3>
+                            <div class="success_message card">
+                                <div class="card-body fs-6 py-1">
+                                    '{{ word }}' added to trie successfully!
+                                </div>
+                            </div>
                         {% else %}
-                            <h3>{{ word }} already exists.</h3>
+                            <div class="fail_message card">
+                                <div class="card-body fs-6 py-1">
+                                    '{{ word }}' already exists.
+                                </div>
+                            </div>
                         {% endif %}
                     </div>
                     <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
