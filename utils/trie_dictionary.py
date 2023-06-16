@@ -22,6 +22,14 @@ class TrieDictionary:
         self.root = Node('')
         self.__read_words()
 
+    def __read_words(self):
+        with open(TrieDictionary.WORDS_PATH, 'r') as file:
+            words = [word.strip() for word in file.readlines()]
+        for word in words:
+            if word == '---':
+                continue
+            self.insert_to_trie(word)
+
     def search_word(self, word):
         this_node = self.root
         index = 0
@@ -42,15 +50,6 @@ class TrieDictionary:
                 finished = True
         return found
 
-    def add_new_word(self, word):
-        res = self.insert_to_trie(word)
-        if res:
-            with open(TrieDictionary.WORDS_PATH, 'a') as file:
-                file.write('---\n')
-                file.write(word + '\n')
-            return True
-        return False
-
     def insert_to_trie(self, word):
         already_exists = self.search_word(word)
         if not already_exists:
@@ -63,13 +62,14 @@ class TrieDictionary:
             return True
         return False
 
-    def __read_words(self):
-        with open(TrieDictionary.WORDS_PATH, 'r') as file:
-            words = [word.strip() for word in file.readlines()]
-        for word in words:
-            if word == '---':
-                continue
-            self.insert_to_trie(word)
+    def add_new_word(self, word):
+        res = self.insert_to_trie(word)
+        if res:
+            with open(TrieDictionary.WORDS_PATH, 'a') as file:
+                file.write('---\n')
+                file.write(word + '\n')
+            return True
+        return False
 
     def make_suggestion(self, word):
         pass
