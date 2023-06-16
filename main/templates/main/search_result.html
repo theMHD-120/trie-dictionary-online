@@ -50,28 +50,47 @@
             box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.0) inset, 0px 0px 8px rgba(255, 100, 255, 0.0);
         }
 
-        .success_message {
-            border: 2px solid rgb(5, 127, 99);
-            background-color: rgba(0, 0, 0, 0);
-            height: 2.2rem;
+        .message {
+            height: 35px;
+            border: none;
+            background: none;
+        }
+        .alert {
+            padding: 7px;
+            font-size: 16px;
+            margin-top: -5px;
+            transition: 0.5s;
+            border-radius: 8px;
+            background-color: rgba(23, 1, 1, 0.15);
+        }
+        .success_alert {
+            color: rgb(21, 53, 1);
+            border: #129203 2px solid;
+        }
+        .success_alert:hover {
+            color: #cbfac5;
+            background-color: rgb(27, 67, 3);
+        }
+        .fail-alert {
+            color: rgb(100, 3, 3);
+            border: #c80404 2px solid;
+        }
+        .fail-alert:hover {
+            color: #fdc5c5;
+            background-color: rgb(62, 3, 3);
+        }
+        .closebtn {
+            color: white;
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
             transition: 0.3s;
-            color: rgb(7, 63, 50);
+            margin-top: -7px;
+            margin-left: 15px;
+            font-weight: bold;
         }
-
-        .success_message:hover {
-            background-color: rgb(158, 255, 235, 0.5);
-        }
-
-        .fail_message {
-            border: 2px solid rgb(127, 5, 33);
-            background-color: rgba(0, 0, 0, 0);
-            height: 2.2rem;
-            transition: 0.3s;
-            color: rgb(55, 6, 18);
-        }
-
-        .fail_message:hover {
-            background-color: rgba(255, 128, 184, 0.5);
+        .closebtn:hover {
+            color: #8cabb3;
         }
     </style>
 {% endblock %}
@@ -156,16 +175,22 @@ Dictionary Online</pre>
                             </div>
                         </form>
                         {% if result %}
-                            <div class="success_message card">
-                                <div class="card-body fs-6 py-1">
-                                    '{{ word }}' found!
+                            <div class="message card">
+                                <div class="card-body fs-6 py-0">
+                                    <div class="success_alert alert">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        '{{ word }}' found!
+                                    </div>
                                 </div>
                             </div>
 
                         {% else %}
-                            <div class="fail_message card">
-                                <div class="card-body fs-6 py-1">
-                                    Unfortunately, '{{ word }}' didn't find.
+                            <div class="message card">
+                                <div class="card-body fs-6 py-0">
+                                    <div class="fail-alert alert">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        Unfortunately, '{{ word }}' didn't find.
+                                    </div>
                                 </div>
                             </div>
                         {% endif %}

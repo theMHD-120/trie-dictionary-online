@@ -11,7 +11,6 @@
             background-color: rgba(240, 248, 255, 0.55);
             box-shadow: rgba(255, 0, 0, 0.32) 0 3px 90px 10px;
         }
-
         .main-card:hover {
             transform: translateY(-4px);
             background-color: rgba(227, 231, 250, 0.92);
@@ -39,7 +38,6 @@
             transition: 0.5s;
             border-radius: 6px;
         }
-
         li:hover {
             border-bottom: none;
             background-color: rgba(227, 231, 250, 0.96);
@@ -55,36 +53,42 @@
             border: none;
             background: none;
         }
-
+        .alert {
+            padding: 7px;
+            font-size: 16px;
+            margin-top: -5px;
+            transition: 0.5s;
+            border-radius: 8px;
+            background-color: rgba(23, 1, 1, 0.15);
+        }
         .success_alert {
-            color: white;
-            padding: 10px;
-            margin-top: -7px;
-            border-radius: 12px;
-            background-color: rgba(11, 111, 2, 0.8);
+            color: rgb(21, 53, 1);
+            border: #129203 2px solid;
         }
-
+        .success_alert:hover {
+            color: #cbfac5;
+            background-color: rgb(27, 67, 3);
+        }
         .fail-alert {
-            color: white;
-            padding: 10px;
-            margin-top: -7px;
-            border-radius: 12px;
-            background-color: rgba(220, 6, 6, 0.8);
+            color: rgb(100, 3, 3);
+            border: #c80404 2px solid;
         }
-
+        .fail-alert:hover {
+            color: #fdc5c5;
+            background-color: rgb(62, 3, 3);
+        }
         .closebtn {
             color: white;
             float: right;
             font-size: 22px;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: -6px;
-        {#line-height: 10px;#} margin-left: 15px;
+            margin-top: -7px;
+            margin-left: 15px;
             font-weight: bold;
         }
-
         .closebtn:hover {
-            color: black;
+            color: #8cabb3;
         }
 
     </style>
@@ -187,7 +191,7 @@ Dictionary Online</pre>
                         {% if result %}
                             <div class="message card">
                                 <div class="card-body fs-6 py-0">
-                                    <div class="success_alert">
+                                    <div class="success_alert alert">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                         '{{ word }}' added to trie successfully!
                                     </div>
@@ -196,7 +200,7 @@ Dictionary Online</pre>
                         {% else %}
                             <div class="message card">
                                 <div class="card-body fs-6 py-0">
-                                    <div class="fail-alert">
+                                    <div class="fail-alert alert">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                         '{{ word }}' already exists.
                                     </div>
