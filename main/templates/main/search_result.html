@@ -132,6 +132,11 @@ Dictionary Online</pre>
                                 </div>
                             </div>
                         </form>
+                            {% if result %}
+                                <h3>{{ word }} found</h3>
+                            {% else %}
+                                <h3>{{ word }} not found</h3>
+                            {% endif %}
                     </div>
                     <div class="collapse multi-collapse mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
                         <form action="{% url 'add_word' %}" method="POST">

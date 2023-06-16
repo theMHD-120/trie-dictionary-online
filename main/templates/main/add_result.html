@@ -79,12 +79,12 @@ Dictionary Online</pre>
                         <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse"
                            href="#SearchWordBox"
                            role="button"
-                           aria-expanded="true" aria-controls="SearchWordBox">Search Word</a>
+                           aria-expanded="false" aria-controls="SearchWordBox">Search Word</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#AddWordBox"
                            role="button"
-                           aria-expanded="false" aria-controls="AddWordBox">Add Word</a>
+                           aria-expanded="true" aria-controls="AddWordBox">Add Word</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold" style="color: #303030;" data-bs-toggle="collapse" href="#MusicBox"
@@ -115,8 +115,23 @@ Dictionary Online</pre>
                             reports that.
                         </p>
                     </div>
-                    <div class="collapse multi-collapse show mt-3" id="SearchWordBox" data-bs-parent="#NavGroup">
+                    <div class="collapse multi-collapse mt-3" id="SearchWordBox" data-bs-parent="#NavGroup">
                         <form action="{% url 'search_word' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row mb-4">
+                                <div class="col-10">
+                                    <input class="form-control"
+                                           style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
+                                           placeholder="some thing like word ...." name="word" required>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-outline-dark">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="collapse multi-collapse show mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
+                        <form action="{% url 'add_word' %}" method="POST">
                             {% csrf_token %}
                             <div class="row mb-4">
                                 <div class="col-10">
@@ -128,25 +143,15 @@ Dictionary Online</pre>
                                            placeholder="some thing like word ...." name="word" required>
                                 </div>
                                 <div class="col-2">
-                                    <button type="submit" class="btn btn-outline-dark">Search</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="collapse multi-collapse mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
-                        <form action="{% url 'add_word' %}" method="POST">
-                            {% csrf_token %}
-                            <div class="row mb-4">
-                                <div class="col-10">
-                                    <input class="form-control"
-                                           style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
-                                           placeholder="some thing like word ...." name="word" required>
-                                </div>
-                                <div class="col-2">
                                     <button type="submit" class="btn btn-outline-dark">Add</button>
                                 </div>
                             </div>
                         </form>
+                        {% if result %}
+                            <h3>{{ word }} added to trie successfully</h3>
+                        {% else %}
+                            <h3>{{ word }} already exists.</h3>
+                        {% endif %}
                     </div>
                     <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
                         <audio controls autoplay loop style="margin-left: 160px;">
