@@ -11,6 +11,7 @@
             background-color: rgba(240, 248, 255, 0.55);
             box-shadow: rgba(255, 0, 0, 0.32) 0 3px 90px 10px;
         }
+
         .main-card:hover {
             transform: translateY(-4px);
             background-color: rgba(227, 231, 250, 0.92);
@@ -38,6 +39,7 @@
             transition: 0.5s;
             border-radius: 6px;
         }
+
         li:hover {
             border-bottom: none;
             background-color: rgba(227, 231, 250, 0.96);
@@ -104,7 +106,7 @@ Dictionary Online</pre>
                         </p>
                     </div>
                     <div class="collapse multi-collapse mb-2" id="HelpBox" data-bs-parent="#NavGroup">
-                        <p  style="font-weight: bold; color: rgba(0,0,0,0.64)">In the name of Allah</p>
+                        <p style="font-weight: bold; color: rgba(0,0,0,0.64)">In the name of Allah</p>
                         <p>
                             You can search words inside trie in search word tab.
                             if word existed translation, will be shown else not, a warning alerts you that word doesn't
@@ -120,13 +122,23 @@ Dictionary Online</pre>
                                 <div class="col-10">
                                     <input class="form-control"
                                            style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
-                                           placeholder="some thing like word ...." name="word">
+                                            {% if word %}
+                                           value="{{ word }}"
+                                            {% endif %}
+                                           placeholder="some thing like word ...." name="word" required>
                                 </div>
                                 <div class="col-2">
                                     <button type="submit" class="btn btn-outline-dark">Search</button>
                                 </div>
                             </div>
                         </form>
+                        {% if show_result %}
+                            {% if result %}
+                                <h3>Found</h3>
+                            {% else %}
+                                <h3>Not Found</h3>
+                            {% endif %}
+                        {% endif %}
                     </div>
                     <div class="collapse multi-collapse mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
                         <form action="{% url 'add_word' %}" method="POST">
@@ -147,7 +159,8 @@ Dictionary Online</pre>
                         <audio controls autoplay loop style="margin-left: 160px;">
                             <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
                         </audio>
-                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);"> if didn't start, click to play...</p>
+                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);"> if
+                            didn't start, click to play...</p>
                     </div>
                 </div>
             </div>
