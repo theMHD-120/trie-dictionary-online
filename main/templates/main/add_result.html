@@ -11,6 +11,7 @@
             background-color: rgba(240, 248, 255, 0.55);
             box-shadow: rgba(255, 0, 0, 0.32) 0 3px 90px 10px;
         }
+
         .main-card:hover {
             transform: translateY(-4px);
             background-color: rgba(227, 231, 250, 0.92);
@@ -38,6 +39,7 @@
             transition: 0.5s;
             border-radius: 6px;
         }
+
         li:hover {
             border-bottom: none;
             background-color: rgba(227, 231, 250, 0.96);
@@ -49,34 +51,40 @@
         }
 
         .message {
-            height: 60px;
+            height: 35px;
             border: none;
             background: none;
         }
+
         .success_alert {
-          color: white;
-          padding: 18px;
-          border-radius: 12px;
-          background-color: rgba(11, 111, 2, 0.8);
+            color: white;
+            padding: 10px;
+            margin-top: -7px;
+            border-radius: 12px;
+            background-color: rgba(11, 111, 2, 0.8);
         }
+
         .fail-alert {
             color: white;
-            padding: 18px;
+            padding: 10px;
+            margin-top: -7px;
             border-radius: 12px;
             background-color: rgba(220, 6, 6, 0.8);
         }
+
         .closebtn {
-          color: white;
-          float: right;
-          font-size: 22px;
-          cursor: pointer;
-          transition: 0.3s;
-          line-height: 20px;
-          margin-left: 15px;
-          font-weight: bold;
+            color: white;
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: -6px;
+        {#line-height: 10px;#} margin-left: 15px;
+            font-weight: bold;
         }
+
         .closebtn:hover {
-          color: black;
+            color: black;
         }
 
     </style>
@@ -180,8 +188,8 @@ Dictionary Online</pre>
                             <div class="message card">
                                 <div class="card-body fs-6 py-0">
                                     <div class="success_alert">
-                                          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                            '{{ word }}' added to trie successfully!
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        '{{ word }}' added to trie successfully!
                                     </div>
                                 </div>
                             </div>
@@ -189,8 +197,8 @@ Dictionary Online</pre>
                             <div class="message card">
                                 <div class="card-body fs-6 py-0">
                                     <div class="fail-alert">
-                                          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                            '{{ word }}' already exists.
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        '{{ word }}' already exists.
                                     </div>
                                 </div>
                             </div>
