@@ -4,7 +4,6 @@
     <style>
         .main-card {
             width: 41rem;
-            height: 13rem;
             transition: 0.5s;
             margin-top: 3rem;
             border-radius: 20px;
@@ -105,7 +104,7 @@ Dictionary Online</pre>
                         </p>
                     </div>
                     <div class="collapse multi-collapse mb-2" id="HelpBox" data-bs-parent="#NavGroup">
-                        <p class="mb-0 pb-0" style="font-weight: bold; color: rgba(0,0,0,0.64)">In the name of Allah</p>
+                        <p  style="font-weight: bold; color: rgba(0,0,0,0.64)">In the name of Allah</p>
                         <p>
                             You can search words inside trie in search word tab.
                             if word existed translation, will be shown else not, a warning alerts you that word doesn't
@@ -117,7 +116,7 @@ Dictionary Online</pre>
                     <div class="collapse multi-collapse show mt-3" id="SearchWordBox" data-bs-parent="#NavGroup">
                         <form action="{% url 'search_word' %}" method="POST">
                             {% csrf_token %}
-                            <div class="row">
+                            <div class="row mb-4">
                                 <div class="col-10">
                                     <input class="form-control"
                                            style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
@@ -132,7 +131,7 @@ Dictionary Online</pre>
                     <div class="collapse multi-collapse mt-3" id="AddWordBox" data-bs-parent="#NavGroup">
                         <form action="{% url 'add_word' %}" method="POST">
                             {% csrf_token %}
-                            <div class="row">
+                            <div class="row mb-4">
                                 <div class="col-10">
                                     <input class="form-control"
                                            style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
@@ -141,7 +140,6 @@ Dictionary Online</pre>
                                 <div class="col-2">
                                     <button type="submit" class="btn btn-outline-dark">Add</button>
                                 </div>
-
                             </div>
                         </form>
                     </div>
@@ -149,7 +147,7 @@ Dictionary Online</pre>
                         <audio controls autoplay loop style="margin-left: 160px;">
                             <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
                         </audio>
-                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);"> if doesn't start, click to play...</p>
+                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);"> if didn't start, click to play...</p>
                     </div>
                 </div>
             </div>
