@@ -12,7 +12,6 @@
             background-color: rgba(240, 248, 255, 0.55);
             box-shadow: rgba(255, 0, 0, 0.32) 0 3px 90px 10px;
         }
-
         .main-card:hover {
             transform: translateY(-4px);
             background-color: rgba(227, 231, 250, 0.92);
@@ -33,6 +32,17 @@
             text-shadow: rgba(10, 10, 10, 0.25) 4px 6px 3px;
             filter: drop-shadow(0 5px 5px rgba(10, 10, 10, 0.9));
             background-image: url("{% static 'img/trilogo_.png' %}");
+        }
+
+        li {
+            margin: 1.5px;
+            transition: 0.5s;
+            border-radius: 6px;
+        }
+        li:hover {
+            border-bottom: none;
+            background-color: rgba(227, 231, 250, 0.96);
+            box-shadow: inset rgba(10, 10, 10, 0.25) 4px 6px 3px;
         }
 
         .form-control:focus {
