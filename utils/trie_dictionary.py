@@ -22,20 +22,6 @@ class TrieDictionary:
         self.root = Node('')
         self.__read_words()
 
-    def insert(self, word):
-        this_node = self.root
-        for c in word:
-            if not this_node.childs[ord(c) - 32]:
-                this_node.childs[ord(c) - 32] = Node(c)
-            this_node = this_node.childs[ord(c) - 32]
-        this_node.is_valid = True
-
-    def __read_words(self):
-        with open(TrieDictionary.WORDS_PATH) as file:
-            words = [word.strip() for word in file.readlines()]
-        for word in words:
-            self.insert(word)
-
     def search_word(self, word):
         this_node = self.root
         index = 0
@@ -55,6 +41,35 @@ class TrieDictionary:
             else:
                 finished = True
         return found
+
+    def add_new_word(self, word):
+        res = self.insert_to_trie(word)
+        if res:
+            with open(TrieDictionary.WORDS_PATH, 'a') as file:
+                file.write('---\n')
+                file.write(word + '\n')
+            return True
+        return False
+
+    def insert_to_trie(self, word):
+        already_exists = self.search_word(word)
+        if not already_exists:
+            this_node = self.root
+            for c in word:
+                if not this_node.childs[ord(c) - 32]:
+                    this_node.childs[ord(c) - 32] = Node(c)
+                this_node = this_node.childs[ord(c) - 32]
+            this_node.is_valid = True
+            return True
+        return False
+
+    def __read_words(self):
+        with open(TrieDictionary.WORDS_PATH, 'r') as file:
+            words = [word.strip() for word in file.readlines()]
+        for word in words:
+            if word == '---':
+                continue
+            self.insert_to_trie(word)
 
     def make_suggestion(self, word):
         pass
