@@ -6,9 +6,15 @@ from utils.trie_dictionary import trie_dict
 
 def search_word_view(request):
     if request.method == 'POST':
+        context = {}
         word = request.POST['word'].strip()
-        result = trie_dict.search_word(word)
-        return render(request, 'main/search_result.html', context={'word': word, 'result': result})
+        result = trie_dict.search_word(word, True)
+        context['word'] = word
+        if result == True:
+            context['result'] = result
+        else:
+            context['suggestions'] = result
+        return render(request, 'main/search_result.html', context=context)
     else:
         return redirect(reverse('home'))
 

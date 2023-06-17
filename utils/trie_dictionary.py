@@ -30,26 +30,6 @@ class TrieDictionary:
                 continue
             self.insert_to_trie(word)
 
-    def search_word(self, word):
-        this_node = self.root
-        index = 0
-        found = False
-        finished = False
-        while not finished:
-            node = this_node.childs[ord(word[index]) - 32]
-            if node and node.value == word[index]:
-                index += 1
-                this_node = node
-                if index == len(word):
-                    if this_node.is_valid:
-                        found = True
-                        finished = True
-                    else:
-                        finished = True
-            else:
-                finished = True
-        return found
-
     def insert_to_trie(self, word):
         already_exists = self.search_word(word)
         if not already_exists:
@@ -71,15 +51,41 @@ class TrieDictionary:
             return True
         return False
 
+    def search_word(self, word, make_suggestion=False):
+        this_node = self.root
+        index = 0
+        found = False
+        finished = False
+        while not finished:
+            node = this_node.childs[ord(word[index]) - 32]
+            if node and node.value == word[index]:
+                index += 1
+                this_node = node
+                if index == len(word):
+                    if this_node.is_valid:
+                        found = True
+                        finished = True
+                    else:
+                        finished = True
+            else:
+                finished = True
+        if make_suggestion:
+            suggestions = self.auto_complete(word)[:5]
+            return suggestions
+        return found
+
     def get_last_node(self, word):
         this_node = self.root
         i = 0
         while True:
-            if this_node.childs[ord(word[i]) - 32].value == word[i]:
-                this_node = this_node.childs[ord(word[i]) - 32]
-                if i == len(word)-1:
-                    return this_node
-                i += 1
+            if this_node.childs[ord(word[i]) - 32]:
+                if this_node.childs[ord(word[i]) - 32].value == word[i]:
+                    this_node = this_node.childs[ord(word[i]) - 32]
+                    if i == len(word) - 1:
+                        return this_node
+                    i += 1
+            else:
+                break
 
     def find_results(self, last_node, last_res, all_results):
         if last_node.is_valid:
@@ -91,13 +97,11 @@ class TrieDictionary:
                 res += n.value
                 self.find_results(n, res, all_results)
 
-
     def auto_complete(self, word):
         last_node = self.get_last_node(word)
         all_results = []
         self.find_results(last_node, word, all_results)
         return all_results
-
 
 
 trie_dict = TrieDictionary()

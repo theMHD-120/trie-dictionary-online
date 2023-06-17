@@ -188,6 +188,12 @@ Dictionary Online</pre>
                                     <div class="fail-alert alert">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                         Unfortunately, '{{ word }}' didn't find.
+                                        {% if suggestions %}
+                                            <p>Did you mean:</p>
+                                            {% for suggustion in suggestions %}
+                                            <p>{{ suggustion }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
