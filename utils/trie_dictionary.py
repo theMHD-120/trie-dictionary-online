@@ -71,6 +71,8 @@ class TrieDictionary:
                 finished = True
         if not found and make_suggestion:
             suggestions = self.auto_complete(word)
+            if suggestions:
+                suggestions = suggestions[:5]
             return suggestions
         return found
 
