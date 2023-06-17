@@ -49,7 +49,7 @@
         }
 
         .message {
-            height: 35px;
+            height: 60px;
             border: none;
             background: none;
         }
@@ -177,17 +177,16 @@ Dictionary Online</pre>
                                 <div class="card-body fs-6 py-0">
                                     <div class="success_alert alert">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        '{{ word }}' found!
+                                        < {{ word }} > found!
                                     </div>
                                 </div>
                             </div>
-
                         {% else %}
                             <div class="message card">
                                 <div class="card-body fs-6 py-0">
                                     <div class="fail-alert alert">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        Unfortunately, '{{ word }}' didn't find.
+                                        Unfortunately, < {{ word }} > not found.
                                         {% if suggestions %}
                                             <p class="mb-0">suggestions:
                                             {% for suggustion in suggestions %}

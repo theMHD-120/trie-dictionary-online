@@ -69,14 +69,13 @@ class TrieDictionary:
                         finished = True
             else:
                 finished = True
-        if make_suggestion:
+        if not found and make_suggestion:
             suggestions = self.auto_complete(word)[:5]
             return suggestions
         return found
 
     def get_last_node(self, word):
         this_node = self.root
-        prev_node = self.root
         i = 0
         while True:
             if this_node.childs[ord(word[i]) - 32]:
@@ -85,24 +84,27 @@ class TrieDictionary:
                     if i == len(word) - 1:
                         return this_node
                     i += 1
-                    prev_node = this_node
             else:
-                return prev_node
+                return this_node
 
-    def find_results(self, last_node, last_res, all_results):
+    def find_results(self, last_node, last_pre, all_results):
         if last_node.is_valid:
-            all_results.append(last_res)
+            all_results.append(last_pre)
 
         for n in last_node.childs:
-            res = last_res
+            pre = last_pre
             if n:
-                res += n.value
-                self.find_results(n, res, all_results)
+                pre += n.value
+                self.find_results(n, pre, all_results)
 
     def auto_complete(self, word):
         last_node = self.get_last_node(word)
+        for i in range(len(word)):
+            if last_node and word[i] == last_node.value:
+                prefix = word[:i + 1]
+                break
         all_results = []
-        self.find_results(last_node, word, all_results)
+        self.find_results(last_node, prefix, all_results)
         return all_results
 
 
