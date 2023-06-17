@@ -101,10 +101,10 @@ class TrieDictionary:
     def auto_complete(self, word):
         last_node = self.get_last_node(word)
         if last_node:
-            prefix = word
             all_results = []
-            self.find_results(last_node, prefix, all_results)
+            self.find_results(last_node, word, all_results)
             return all_results
         return None
+
 
 trie_dict = TrieDictionary()

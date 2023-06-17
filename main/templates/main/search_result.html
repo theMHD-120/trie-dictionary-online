@@ -44,8 +44,13 @@
             box-shadow: inset rgba(10, 10, 10, 0.25) 4px 6px 3px;
         }
 
+        .form-control {
+            background-color: rgba(0,0,0,0);
+        }
         .form-control:focus {
-            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.0) inset, 0px 0px 8px rgba(255, 100, 255, 0.0);
+            border: none;
+            background-color: rgb(227, 231, 250);
+            box-shadow: inset rgba(10, 10, 10, 0.25) 4px 6px 3px;
         }
 
         .message {
@@ -62,6 +67,7 @@
             background-color: rgba(135, 6, 6, 0.15);
         }
         .success_alert {
+            margin-top: 5px;
             color: rgb(21, 53, 1);
             border: #129203 2px solid;
         }
@@ -161,11 +167,11 @@ Dictionary Online</pre>
                             <div class="row mb-4">
                                 <div class="col-10">
                                     <input class="form-control"
-                                           style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
+                                           style="border-color: #303030" type="text"
                                             {% if word %}
                                            value="{{ word }}"
                                             {% endif %}
-                                           placeholder="some thing like word ...." name="word" required>
+                                           placeholder="Enter something to search ...." name="word" required>
                                 </div>
                                 <div class="col-2">
                                     <button type="submit" class="btn btn-outline-dark">Search</button>
@@ -177,7 +183,7 @@ Dictionary Online</pre>
                                 <div class="card-body fs-6 py-0">
                                     <div class="success_alert alert">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        < {{ word }} > found!
+                                        Yes! < {{ word }} > found!
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +198,7 @@ Dictionary Online</pre>
                                             {% for suggustion in suggestions %}
                                                 {{ suggustion }},
                                             {% endfor %}
-                                            ...
+                                            ?
                                             </p>
                                         {% endif %}
                                     </div>
@@ -206,8 +212,8 @@ Dictionary Online</pre>
                             <div class="row mb-4">
                                 <div class="col-10">
                                     <input class="form-control"
-                                           style="background-color: rgba(0,0,0,0); border-color: #303030" type="text"
-                                           placeholder="some thing like word ...." name="word" required>
+                                           style="border-color: #303030" type="text"
+                                           placeholder="Enter something to add ..." name="word" required>
                                 </div>
                                 <div class="col-2">
                                     <button type="submit" class="btn btn-outline-dark">Add</button>
