@@ -85,7 +85,7 @@ class TrieDictionary:
                         return this_node
                     i += 1
             else:
-                break
+                return this_node
 
     def find_results(self, last_node, last_res, all_results):
         if last_node.is_valid:
