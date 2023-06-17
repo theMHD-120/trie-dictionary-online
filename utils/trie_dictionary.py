@@ -76,6 +76,7 @@ class TrieDictionary:
 
     def get_last_node(self, word):
         this_node = self.root
+        prev_node = self.root
         i = 0
         while True:
             if this_node.childs[ord(word[i]) - 32]:
@@ -84,8 +85,9 @@ class TrieDictionary:
                     if i == len(word) - 1:
                         return this_node
                     i += 1
+                    prev_node = this_node
             else:
-                return this_node
+                return prev_node
 
     def find_results(self, last_node, last_res, all_results):
         if last_node.is_valid:
