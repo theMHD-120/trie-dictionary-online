@@ -71,8 +71,33 @@ class TrieDictionary:
             return True
         return False
 
-    def make_suggestion(self, word):
-        pass
+    def get_last_node(self, word):
+        this_node = self.root
+        i = 0
+        while True:
+            if this_node.childs[ord(word[i]) - 32].value == word[i]:
+                this_node = this_node.childs[ord(word[i]) - 32]
+                if i == len(word)-1:
+                    return this_node
+                i += 1
+
+    def find_results(self, last_node, last_res, all_results):
+        if last_node.is_valid:
+            all_results.append(last_res)
+
+        for n in last_node.childs:
+            res = last_res
+            if n:
+                res += n.value
+                self.find_results(n, res, all_results)
+
+
+    def auto_complete(self, word):
+        last_node = self.get_last_node(word)
+        all_results = []
+        self.find_results(last_node, word, all_results)
+        return all_results
+
 
 
 trie_dict = TrieDictionary()
