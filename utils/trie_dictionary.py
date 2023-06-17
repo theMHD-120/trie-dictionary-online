@@ -70,7 +70,9 @@ class TrieDictionary:
             else:
                 finished = True
         if not found and make_suggestion:
-            suggestions = self.auto_complete(word)[:5]
+            suggestions = self.auto_complete(word)
+            if suggestions:
+                suggestions = suggestions[:5]
             return suggestions
         return found
 
@@ -85,7 +87,7 @@ class TrieDictionary:
                         return this_node
                     i += 1
             else:
-                return this_node
+                return False
 
     def find_results(self, last_node, last_pre, all_results):
         if last_node.is_valid:
@@ -98,13 +100,11 @@ class TrieDictionary:
 
     def auto_complete(self, word):
         last_node = self.get_last_node(word)
-        for i in range(len(word)):
-            if last_node and word[i] == last_node.value:
-                prefix = word[:i + 1]
-                break
-        all_results = []
-        self.find_results(last_node, prefix, all_results)
-        return all_results
-
+        if last_node:
+            prefix = word
+            all_results = []
+            self.find_results(last_node, prefix, all_results)
+            return all_results
+        return None
 
 trie_dict = TrieDictionary()
