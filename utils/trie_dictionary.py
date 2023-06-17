@@ -90,7 +90,6 @@ class TrieDictionary:
     def find_results(self, last_node, last_pre, all_results):
         if last_node.is_valid:
             all_results.append(last_pre)
-
         for n in last_node.childs:
             pre = last_pre
             if n:
