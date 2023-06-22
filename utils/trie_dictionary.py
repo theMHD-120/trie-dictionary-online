@@ -34,10 +34,10 @@ class TrieDictionary:
         already_exists = self.search_word(word)
         if not already_exists:
             this_node = self.root
-            for c in word:
-                if not this_node.childs[ord(c) - 32]:
-                    this_node.childs[ord(c) - 32] = Node(c)
-                this_node = this_node.childs[ord(c) - 32]
+            for char in word:
+                if not this_node.childs[ord(char) - 32]:
+                    this_node.childs[ord(char) - 32] = Node(char)
+                this_node = this_node.childs[ord(char) - 32]
             this_node.is_valid = True
             return True
         return False
@@ -71,6 +71,7 @@ class TrieDictionary:
                 finished = True
         if not found and make_suggestion:
             suggestions = self.auto_complete(word)
+            self.get_suggestion(word, suggestions)
             if suggestions:
                 suggestions = suggestions[:5]
             return suggestions
@@ -105,6 +106,9 @@ class TrieDictionary:
             self.find_results(last_node, word, all_results)
             return all_results
         return None
+
+    def get_suggestion(self, word, suggests):
+        pass
 
 
 trie_dict = TrieDictionary()

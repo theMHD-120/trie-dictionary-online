@@ -194,11 +194,11 @@ Dictionary Online</pre>
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                         Unfortunately, < {{ word }} > not found.
                                         {% if suggestions %}
-                                            <p class="mb-0">Did you mean:
+                                            <p class="mb-0">Suggestions:
                                             {% for suggustion in suggestions %}
                                                 {{ suggustion }},
                                             {% endfor %}
-                                            ?
+                                            ...
                                             </p>
                                         {% endif %}
                                     </div>
@@ -225,8 +225,8 @@ Dictionary Online</pre>
                         <audio controls autoplay loop style="margin-left: 160px;">
                             <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
                         </audio>
-                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);"> if
-                            didn't start, click to play...</p>
+                        <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);">
+                            if didn't start, click to play...</p>
                     </div>
                 </div>
             </div>
