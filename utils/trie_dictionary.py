@@ -1,5 +1,4 @@
 import os
-
 UTILS_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -16,7 +15,7 @@ class Node:
 
 
 class TrieDictionary:
-    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words2.txt'))
+    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
 
     def __init__(self):
         self.root = Node('')
@@ -93,15 +92,20 @@ class TrieDictionary:
             else:
                 return this_node, i
 
-    def find_results(self, last_node, last_pre, all_results):
-        if last_node.is_valid:
-            if last_pre not in all_results:
+    def find_results(self, last_node, last_pre, all_results, reverse=False):
+        if last_node.is_valid and last_pre not in all_results:
+            if reverse:
+                all_results.append(last_pre[::-1])
+            else:
                 all_results.append(last_pre)
         for n in last_node.childs:
             pre = last_pre
             if n:
                 pre += n.value
-                self.find_results(n, pre, all_results)
+                if reverse:
+                    self.find_results(n, pre, all_results, True)
+                else:
+                    self.find_results(n, pre, all_results)
 
     def auto_complete(self, word):
         last_node, first_different_index = self.get_last_node(word, self.root)
@@ -120,6 +124,16 @@ class TrieDictionary:
             else:
                 sub_word = word[:first_different_index + 1]
             self.find_results(last_node, sub_word, suggests)
+
+        last_inv_node, first_different_inv_index = self.get_last_node(word[::-1], self.inv_root)
+        if last_inv_node:
+            if not suggests:
+                suggests = []
+                sub_inv_word = word[:first_different_inv_index]
+            else:
+                sub_inv_word = word[:first_different_inv_index + 1]
+            self.find_results(last_inv_node, sub_inv_word, suggests, True)
+
         return suggests
 
 
