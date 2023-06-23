@@ -74,7 +74,7 @@ class TrieDictionary:
                 finished = True
         if not found and make_suggestion:
             suggestions = self.auto_complete(word)
-            # suggestions = self.get_suggestions(word, suggestions)
+            suggestions = self.get_suggestions(word, suggestions)
             if suggestions:
                 suggestions = suggestions
             return suggestions
@@ -112,20 +112,14 @@ class TrieDictionary:
         return None
 
     def get_suggestions(self, word, suggests):
-        word_ref = word
-        for i in range(len(word)):
-            word = word_ref[:i+1]
-            print(word)
-            last_node, first_different_index = self.get_last_node(word, self.root)
-            print(last_node)
-            if last_node:
-                if not suggests:
-                    suggests = []
-                    sub_word = word[:first_different_index]
-                else:
-                    sub_word = word[:first_different_index + 1]
-                self.find_results(last_node, sub_word, suggests)
-            print(suggests)
+        last_node, first_different_index = self.get_last_node(word, self.root)
+        if last_node:
+            if not suggests:
+                suggests = []
+                sub_word = word[:first_different_index]
+            else:
+                sub_word = word[:first_different_index + 1]
+            self.find_results(last_node, sub_word, suggests)
         return suggests
 
 
