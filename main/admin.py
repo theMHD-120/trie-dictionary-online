@@ -5,7 +5,7 @@ from .models import Word
 
 @admin.register(Word)
 class WordAdmin(admin.ModelAdmin):
-    fields = [
+    list_display = [
         'word',
         'frequency',
     ]

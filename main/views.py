@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse
 from django.views.decorators.http import require_POST
 
+from .models import Word
 from utils.trie_dictionary import trie_dict
+
 
 
 def search_word_view(request):
@@ -12,6 +14,9 @@ def search_word_view(request):
         context['word'] = word
         if result == True:
             context['result'] = result
+            word_obj = Word.objects.get(word=word)
+            word_obj.frequency += 1
+            word_obj.save()
         else:
             context['suggestions'] = result
         return render(request, 'main/search_result.html', context=context)

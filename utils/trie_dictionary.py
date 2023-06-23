@@ -1,4 +1,7 @@
 import os
+
+from main.models import Word
+
 UTILS_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -15,12 +18,30 @@ class Node:
 
 
 class TrieDictionary:
-    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words2.txt'))
+    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
 
     def __init__(self):
         self.root = Node('')
         self.inv_root = Node('')
         self.__read_words()
+
+    def save_to_db(self, word):
+        all_word_objects = Word.objects.all()
+        found = False
+        for word_obj in all_word_objects:
+            if word_obj.word == word:
+                found = True
+                return False
+        if not found:
+            new_word = Word.objects.create(word=word)
+            new_word.save()
+            return True
+
+    def delete_from_db(self, word):
+        all_word_objects = Word.objects.all()
+        for word_obj in all_word_objects:
+            if word_obj.word == word:
+                word_obj.delete()
 
     def __read_words(self):
         with open(TrieDictionary.WORDS_PATH, 'r') as file:
@@ -28,6 +49,7 @@ class TrieDictionary:
         for word in words:
             if word == '---':
                 continue
+            # self.save_to_db(word)
             self.insert_to_trie(word, start_node=self.root)
             self.insert_to_trie(word[::-1], start_node=self.inv_root)
 
@@ -47,6 +69,7 @@ class TrieDictionary:
         res = self.insert_to_trie(word, self.root)
         self.insert_to_trie(word[::-1], self.inv_root)
         if res:
+            self.save_to_db(word)
             with open(TrieDictionary.WORDS_PATH, 'a') as file:
                 file.write('---\n')
                 file.write(word + '\n')
@@ -130,7 +153,7 @@ class TrieDictionary:
         if last_inv_node and last_inv_node != self.inv_root:
             if not suggests:
                 suggests = []
-            sub_inv_word = word[:first_different_inv_index+1]
+            sub_inv_word = word[:first_different_inv_index + 1]
             self.find_results(last_inv_node, sub_inv_word, suggests, True)
 
         return suggests
