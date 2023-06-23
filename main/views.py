@@ -8,7 +8,7 @@ def search_word_view(request):
     if request.method == 'POST':
         context = {}
         word = request.POST['word'].strip()
-        result = trie_dict.search_word(word, True)
+        result = trie_dict.search_word(word, trie_dict.root, True)
         context['word'] = word
         if result == True:
             context['result'] = result

@@ -16,10 +16,11 @@ class Node:
 
 
 class TrieDictionary:
-    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
+    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words2.txt'))
 
     def __init__(self):
         self.root = Node('')
+        self.inv_root = Node('')
         self.__read_words()
 
     def __read_words(self):
@@ -28,12 +29,13 @@ class TrieDictionary:
         for word in words:
             if word == '---':
                 continue
-            self.insert_to_trie(word)
+            self.insert_to_trie(word, start_node=self.root)
+            self.insert_to_trie(word[::-1], start_node=self.inv_root)
 
-    def insert_to_trie(self, word):
-        already_exists = self.search_word(word)
+    def insert_to_trie(self, word, start_node):
+        already_exists = self.search_word(word, start_node)
         if not already_exists:
-            this_node = self.root
+            this_node = start_node
             for char in word:
                 if not this_node.childs[ord(char) - 32]:
                     this_node.childs[ord(char) - 32] = Node(char)
@@ -43,7 +45,8 @@ class TrieDictionary:
         return False
 
     def add_new_word(self, word):
-        res = self.insert_to_trie(word)
+        res = self.insert_to_trie(word, self.root)
+        self.insert_to_trie(word[::-1], self.inv_root)
         if res:
             with open(TrieDictionary.WORDS_PATH, 'a') as file:
                 file.write('---\n')
@@ -51,8 +54,8 @@ class TrieDictionary:
             return True
         return False
 
-    def search_word(self, word, make_suggestion=False):
-        this_node = self.root
+    def search_word(self, word, start_node, make_suggestion=False):
+        this_node = start_node
         index = 0
         found = False
         finished = False
@@ -85,10 +88,10 @@ class TrieDictionary:
                 if this_node.childs[ord(word[i]) - 32].value == word[i]:
                     this_node = this_node.childs[ord(word[i]) - 32]
                     if i == len(word) - 1:
-                        return this_node
+                        return this_node, i
                     i += 1
             else:
-                return False
+                return this_node, i
 
     def find_results(self, last_node, last_pre, all_results):
         if last_node.is_valid:
@@ -100,8 +103,8 @@ class TrieDictionary:
                 self.find_results(n, pre, all_results)
 
     def auto_complete(self, word):
-        last_node = self.get_last_node(word)
-        if last_node:
+        last_node, last_common_index = self.get_last_node(word)
+        if last_node and last_common_index == len(word)-1:
             all_results = []
             self.find_results(last_node, word, all_results)
             return all_results
