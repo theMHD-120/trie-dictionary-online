@@ -15,7 +15,7 @@ class Node:
 
 
 class TrieDictionary:
-    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
+    WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words2.txt'))
 
     def __init__(self):
         self.root = Node('')
@@ -117,7 +117,7 @@ class TrieDictionary:
 
     def get_suggestions(self, word, suggests):
         last_node, first_different_index = self.get_last_node(word, self.root)
-        if last_node:
+        if last_node and last_node != self.root:
             if not suggests:
                 suggests = []
                 sub_word = word[:first_different_index]
@@ -126,12 +126,11 @@ class TrieDictionary:
             self.find_results(last_node, sub_word, suggests)
 
         last_inv_node, first_different_inv_index = self.get_last_node(word[::-1], self.inv_root)
-        if last_inv_node:
+        word = word[::-1]
+        if last_inv_node and last_inv_node != self.inv_root:
             if not suggests:
                 suggests = []
-                sub_inv_word = word[:first_different_inv_index]
-            else:
-                sub_inv_word = word[:first_different_inv_index + 1]
+            sub_inv_word = word[:first_different_inv_index+1]
             self.find_results(last_inv_node, sub_inv_word, suggests, True)
 
         return suggests
