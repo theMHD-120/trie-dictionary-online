@@ -74,14 +74,14 @@ class TrieDictionary:
                 finished = True
         if not found and make_suggestion:
             suggestions = self.auto_complete(word)
-            self.get_suggestion(word, suggestions)
+            # suggestions = self.get_suggestions(word, suggestions)
             if suggestions:
-                suggestions = suggestions[:5]
+                suggestions = suggestions
             return suggestions
         return found
 
-    def get_last_node(self, word):
-        this_node = self.root
+    def get_last_node(self, word, start_node):
+        this_node = start_node
         i = 0
         while True:
             if this_node.childs[ord(word[i]) - 32]:
@@ -95,7 +95,8 @@ class TrieDictionary:
 
     def find_results(self, last_node, last_pre, all_results):
         if last_node.is_valid:
-            all_results.append(last_pre)
+            if last_pre not in all_results:
+                all_results.append(last_pre)
         for n in last_node.childs:
             pre = last_pre
             if n:
@@ -103,15 +104,29 @@ class TrieDictionary:
                 self.find_results(n, pre, all_results)
 
     def auto_complete(self, word):
-        last_node, last_common_index = self.get_last_node(word)
-        if last_node and last_common_index == len(word)-1:
+        last_node, first_different_index = self.get_last_node(word, self.root)
+        if last_node and last_node.value == word[first_different_index]:
             all_results = []
             self.find_results(last_node, word, all_results)
             return all_results
         return None
 
-    def get_suggestion(self, word, suggests):
-        pass
+    def get_suggestions(self, word, suggests):
+        word_ref = word
+        for i in range(len(word)):
+            word = word_ref[:i+1]
+            print(word)
+            last_node, first_different_index = self.get_last_node(word, self.root)
+            print(last_node)
+            if last_node:
+                if not suggests:
+                    suggests = []
+                    sub_word = word[:first_different_index]
+                else:
+                    sub_word = word[:first_different_index + 1]
+                self.find_results(last_node, sub_word, suggests)
+            print(suggests)
+        return suggests
 
 
 trie_dict = TrieDictionary()
