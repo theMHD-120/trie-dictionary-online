@@ -5,7 +5,6 @@ from .models import Word
 from utils.trie_dictionary import trie_dict
 
 
-
 def search_word_view(request):
     if request.method == 'POST':
         context = {}

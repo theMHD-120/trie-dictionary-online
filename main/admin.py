@@ -9,4 +9,5 @@ class WordAdmin(admin.ModelAdmin):
         'word',
         'frequency',
     ]
+    search_fields = ['word']
 
