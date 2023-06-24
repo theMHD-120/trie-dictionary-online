@@ -6,6 +6,9 @@ UTILS_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 class Node:
+    """
+    Nodes of trie
+    """
     def __init__(self, value):
         self.is_valid = False
         self.childs = [None for i in range(130)]
@@ -18,25 +21,43 @@ class Node:
 
 
 class TrieDictionary:
+    """
+    Trie Dictionary
+    this has 2 initial nodes
+    one for true words and another for inversed words
+    """
     WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
 
     def __init__(self):
+        """
+        initialize trie
+        reading from words.txt file
+        """
         self.root = Node('')
         self.inv_root = Node('')
         self.__read_words()
 
     def save_to_db(self, word):
+        """
+        saves the given word to database.
+        """
         new_word = Word.objects.create(word=word)
         new_word.save()
         return True
 
     def delete_from_db(self, word):
+        """
+        deletes word from database.
+        """
         all_word_objects = Word.objects.all()
         for word_obj in all_word_objects:
             if word_obj.word == word:
                 word_obj.delete()
 
     def __read_words(self):
+        """
+        reads words from files and inserts it to trie
+        """
         with open(TrieDictionary.WORDS_PATH, 'r') as file:
             words = [word.strip() for word in file.readlines()]
         for word in words:
@@ -46,6 +67,9 @@ class TrieDictionary:
             self.insert_to_trie(word[::-1], start_node=self.inv_root)
 
     def insert_to_trie(self, word, start_node):
+        """
+        inserts words to trie
+        """
         already_exists = self.search_word(word, start_node)
         if not already_exists:
             this_node = start_node
@@ -58,6 +82,9 @@ class TrieDictionary:
         return False
 
     def add_new_word(self, word):
+        """
+        adds new word to trie if it is not exists
+        """
         res = self.insert_to_trie(word, self.root)
         self.insert_to_trie(word[::-1], self.inv_root)
         if res:
@@ -69,6 +96,11 @@ class TrieDictionary:
         return False
 
     def search_word(self, word, start_node, make_suggestion=False):
+        """
+        search for a word in trie
+        if it existed returns True
+        if not returns a list of suggestions
+        """
         this_node = start_node
         index = 0
         found = False
@@ -95,6 +127,9 @@ class TrieDictionary:
         return found
 
     def get_last_node(self, word, start_node):
+        """
+        finds last common node between trie and given word
+        """
         this_node = start_node
         i = 0
         while True:
@@ -108,6 +143,9 @@ class TrieDictionary:
                 return this_node, i
 
     def find_results(self, last_node, last_pre, all_results, reverse=False):
+        """
+        finds suggestions, starts with the last common node recursively.
+        """
         if last_node.is_valid and last_pre not in all_results:
             if reverse:
                 all_results.append(last_pre[::-1])
@@ -123,6 +161,9 @@ class TrieDictionary:
                     self.find_results(n, pre, all_results)
 
     def auto_complete(self, word):
+        """
+        auto completes invalid word
+        """
         last_node, first_different_index = self.get_last_node(word, self.root)
         if last_node and last_node.value == word[first_different_index]:
             all_results = []
@@ -131,6 +172,9 @@ class TrieDictionary:
         return None
 
     def get_suggestions(self, word, suggests):
+        """
+        if word is not valid guesses some suggests instead of word
+        """
         last_node, first_different_index = self.get_last_node(word, self.root)
         if last_node and last_node != self.root:
             if not suggests:
