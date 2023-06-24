@@ -96,6 +96,14 @@
         .closebtn:hover {
             color: #8cabb3;
         }
+
+        audio {
+            margin-left: 160px;
+        }
+        audio:focus {
+            border: none;
+        }
+
     </style>
 {% endblock %}
 
@@ -222,11 +230,11 @@ Dictionary Online</pre>
                         </form>
                     </div>
                     <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
-                        <audio controls loop style="margin-left: 160px;">
+                        <audio controls loop>
                             <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
                         </audio>
                         <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);">
-                            Click start button to play...</p>
+                            Click the start button to play...</p>
                     </div>
                 </div>
             </div>

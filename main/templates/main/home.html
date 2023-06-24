@@ -53,52 +53,59 @@
             box-shadow: inset rgba(10, 10, 10, 0.25) 4px 6px 3px;
         }
 
-        .Developers {
+        audio {
+            margin-left: 160px;
+        }
+        audio:focus {
+            border: none;
+        }
+
+        .Welcome_massage {
             font-size: 47px;
             margin-top: 110px;
             text-align: center;
-            animation: devs_names 5s 1s 1 linear forwards;
+            animation: wel_massage 6s 1 linear forwards;
         }
-        @keyframes devs_names {
+        @keyframes wel_massage {
             0% {
                 color: rgba(235, 239, 238, 0.2);
-                text-shadow: rgba(10, 10, 10, 0.5) 10px 10px 8px;
+                text-shadow: rgba(255, 255, 255, 0.1) 1px 2px 1px;
             }
             10% {
-                color: rgba(235, 239, 238, 0.7);
-                text-shadow: rgba(10, 10, 10, 0.7) 8px 8px 8px;
+                color: rgba(235, 239, 238, 0.4);
+                text-shadow: rgba(255, 255, 255, 0.2) 1px 2px 3px;
             }
             20% {
-                color: rgba(235, 239, 238, 0.8);
-                text-shadow: rgba(10, 10, 10, 0.8) 8px 8px 7px;
+                color: rgba(235, 239, 238, 0.6);
+                text-shadow: rgba(255, 243, 243, 0.3) 1px 2px 5px;
             }
             40% {
-                color: rgba(233, 207, 241, 0.9);
-                text-shadow: rgba(86, 6, 6, 0.9) 5px 5px 6px;
+                color: rgba(233, 207, 241, 0.8);
+                text-shadow: rgba(255, 230, 230, 0.4) 1px 2px 7px;
             }
             50% {
                 color: rgb(255, 255, 255);
-                text-shadow: rgba(123, 6, 6) 0 0 8px
+                text-shadow: rgba(253, 197, 197, 0.5) 1px 2px 9px
             }
             60% {
-                color: rgba(217, 207, 241, 0.9);
-                text-shadow: rgba(86, 6, 6, 0.9) -5px 5px 6px;
+                color: rgba(217, 207, 241);
+                text-shadow: rgba(255, 179, 179, 0.6) 1px 2px 11px;
             }
             80% {
-                color: rgba(235, 239, 238, 0.8);
-                text-shadow: rgba(10, 10, 10, 0.8) -8px 8px 7px;
+                color: rgba(235, 239, 238);
+                text-shadow: rgba(255, 122, 122, 0.7) 1px 2px 13px;
             }
             90% {
-                color: rgba(235, 239, 238, 0.7);
-                text-shadow: rgba(10, 10, 10, 0.7) -8px 8px 8px;
+                color: rgba(235, 239, 238);
+                text-shadow: rgba(255, 54, 54, 0.8) 1px 2px 15px;
             }
             95% {
-                color: rgba(235, 239, 238, 0.2);
-                text-shadow: rgba(10, 10, 10, 0.5) -10px 10px 8px;
+                color: rgba(235, 239, 238);
+                text-shadow: rgba(255, 0, 0, 0.9) 1px 2px 17px;
             }
             100% {
                 color: rgba(235, 239, 238, 0);
-                text-shadow: rgba(253, 253, 253, 0) 0 0 2px;
+                text-shadow: rgba(255, 255, 255, 0) 1px 2px 20px;
             }
         }
 
@@ -201,7 +208,7 @@ Dictionary Online</pre>
                         </form>
                     </div>
                     <div class="collapse multi-collapse mt-3" id="MusicBox" data-bs-parent="#NavGroup">
-                        <audio controls loop style="margin-left: 160px;">
+                        <audio controls loop autoplay>
                             <source src="{% static 'audio/music1.mp3' %}" type="audio/mpeg">
                         </audio>
                         <p style="margin-top: 5px; font-weight: bold; text-align: center; color: rgba(0,0,0,0.7);">
@@ -211,7 +218,7 @@ Dictionary Online</pre>
             </div>
         </div>
     </div>
-    <div class="Developers">
-        Welcome to the Trie Dictionary online
+    <div class="Welcome_massage">
+        Welcome to the Trie Dictionary online!
     </div>
 {% endblock %}
