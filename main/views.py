@@ -10,9 +10,12 @@ def search_word_view(request):
         context = {}
         word = request.POST['word'].strip()
         result = trie_dict.search_word(word, trie_dict.root, True)
+        result_lower = trie_dict.search_word(word.lower(), trie_dict.root, True)
         context['word'] = word
-        if result == True:
+        if result == True or result_lower == True:
             context['result'] = result
+            if result_lower == True:
+                word = word.lower()
             word_obj = Word.objects.get(word=word)
             word_obj.frequency += 1
             word_obj.save()
