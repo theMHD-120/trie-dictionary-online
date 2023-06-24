@@ -26,16 +26,9 @@ class TrieDictionary:
         self.__read_words()
 
     def save_to_db(self, word):
-        all_word_objects = Word.objects.all()
-        found = False
-        for word_obj in all_word_objects:
-            if word_obj.word == word:
-                found = True
-                return False
-        if not found:
-            new_word = Word.objects.create(word=word)
-            new_word.save()
-            return True
+        new_word = Word.objects.create(word=word)
+        new_word.save()
+        return True
 
     def delete_from_db(self, word):
         all_word_objects = Word.objects.all()
@@ -49,7 +42,6 @@ class TrieDictionary:
         for word in words:
             if word == '---':
                 continue
-            # self.save_to_db(word)
             self.insert_to_trie(word, start_node=self.root)
             self.insert_to_trie(word[::-1], start_node=self.inv_root)
 

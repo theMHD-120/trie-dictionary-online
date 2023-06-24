@@ -17,7 +17,8 @@ def search_word_view(request):
             word_obj.frequency += 1
             word_obj.save()
         else:
-            context['suggestions'] = result
+            word_objects = Word.objects.filter(word__in=result).order_by('-frequency')[:5]
+            context['suggestions'] = word_objects
         return render(request, 'main/search_result.html', context=context)
     else:
         return redirect(reverse('home'))
