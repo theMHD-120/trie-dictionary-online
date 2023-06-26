@@ -45,12 +45,17 @@
         }
 
         .form-control {
-            background-color: rgba(0,0,0,0);
+                background-color: rgba(0,0,0,0);
         }
         .form-control:focus {
             border: none;
             background-color: rgb(227, 231, 250);
             box-shadow: inset rgba(10, 10, 10, 0.25) 4px 6px 3px;
+        }
+        .form-control:focus .main-card:hover{
+            transform: translateY(-4px);
+            background-color: rgba(227, 231, 250, 0.92);
+            box-shadow: rgba(97, 3, 3, 0.6) 0 10px 45px 10px;
         }
 
         audio {
@@ -101,7 +106,7 @@
                 filter: drop-shadow(0 5px 5px rgba(10, 10, 10, 0.9));
             }
             95% {
-                color: rgb(255, 9, 9);
+                color: rgb(93, 2, 78);
                 text-shadow: rgba(255, 0, 0, 0.9) 1px 2px 17px;
                 filter: drop-shadow(0 5px 5px rgba(104, 3, 3, 0.9));
             }
