@@ -24,7 +24,7 @@ class TrieDictionary:
     """
     Trie Dictionary
     this has 2 initial nodes
-    one for true words and another for inversed words
+    one for true words and another for reversed words
     """
     WORDS_PATH = str(os.path.join(UTILS_DIR, 'utils\\words.txt'))
 
@@ -119,7 +119,7 @@ class TrieDictionary:
             else:
                 finished = True
         if not found and make_suggestion:
-            # if word didn't found in trie first try to find autocompletes
+            # if word not found in trie first try to find autocompletes
             suggestions = self.auto_complete(word)
             # after autocomplete, try to make suggestions.
             suggestions = self.get_suggestions(word, suggestions)
@@ -177,7 +177,8 @@ class TrieDictionary:
         """
         if word is not valid guesses some suggests instead of word
         """
-        # if word be prefix
+
+        # if word be prefix ...
         last_node, first_different_index = self.get_last_node(word, self.root)
         if last_node and last_node != self.root:
             if not suggests:
@@ -186,7 +187,8 @@ class TrieDictionary:
             else:
                 sub_word = word[:first_different_index + 1]
             self.find_results(last_node, sub_word, suggests)
-        #  if word be suffix
+
+        #  if word be suffix ...
         last_inv_node, first_different_inv_index = self.get_last_node(word[::-1], self.inv_root)
         word = word[::-1]
         if last_inv_node and last_inv_node != self.inv_root:
