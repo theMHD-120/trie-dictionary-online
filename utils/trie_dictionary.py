@@ -1,5 +1,4 @@
 import os
-
 from main.models import Word
 
 UTILS_DIR = os.path.dirname(os.path.dirname(__file__))
