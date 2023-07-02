@@ -121,9 +121,10 @@ class TrieDictionary:
             # if word not found in trie first try to find autocompletes
             suggestions = self.auto_complete(word)
             # after autocomplete, try to make suggestions.
-            suggestions = self.get_suggestions(word, suggestions)
             if suggestions:
                 suggestions = suggestions
+            else:
+                suggestions = self.get_suggestions(word, suggestions)
             return suggestions
         return found
 
