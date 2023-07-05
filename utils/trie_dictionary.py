@@ -194,7 +194,7 @@ class TrieDictionary:
         if last_inv_node and last_inv_node != self.inv_root:
             if not suggests:
                 suggests = []
-            sub_inv_word = word[:first_different_inv_index + 1]
+            sub_inv_word = word[:first_different_inv_index]
             self.find_results(last_inv_node, sub_inv_word, suggests, True)
 
         return suggests

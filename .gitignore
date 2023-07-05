@@ -5,3 +5,6 @@ venv/
 __pycache__/
 utils/test.py
 utils/words2.txt
+liara.json
+read_me.txt
+*.zip
